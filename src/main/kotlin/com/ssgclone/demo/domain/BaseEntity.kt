@@ -1,15 +1,11 @@
 package com.ssgclone.demo.domain
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import lombok.Getter
-import lombok.Setter
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 import javax.persistence.*
 
-@Setter
-@Getter
 @MappedSuperclass
 open class BaseEntity {
     @Id
@@ -29,5 +25,4 @@ open class BaseEntity {
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "removed_at")
     protected var removedAt: LocalDateTime? = null
-
 }

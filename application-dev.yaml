@@ -5,8 +5,8 @@ server:
 debug: true
 
 spring:
-  profiles:
-    active: oracle
+#  profiles:
+#    active: "dev" // build.gradle.kts 에서 task 에 옵션이 등록되어 있다면 사용 금지 (2.4.0 이후)
   datasource:
     url: jdbc:h2:mem:shoppingmall;MODE=Oracle
     username: root

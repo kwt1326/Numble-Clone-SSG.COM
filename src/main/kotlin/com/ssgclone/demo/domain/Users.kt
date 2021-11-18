@@ -1,25 +1,47 @@
 package com.ssgclone.demo.domain
 
 import javax.persistence.*
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.User
+import java.util.stream.Collectors
 
 @Entity
 @Table(name = "users")
-class Users: BaseEntity() {
+data class Users (
 
-    @Column(unique = true, nullable = false)
-    var username: String? = null;
+    @Column(unique = true)
+    var username: String,
 
-    @Column(nullable = false)
-    var realname: String? = null;
+    @Column(unique = true)
+    var address: String,
 
-    @Column(nullable = false)
-    var password: String? = null;
+    @Column(unique = true, name = "phone_number")
+    var phoneNumber: String,
 
-    @Column
-    var email: String? = null;
+    var realname: String,
 
-    @Column(nullable = false, name = "phone_number")
-    var phoneNumber: String? = null;
+    var password: String,
 
+    var email: String,
 
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(fetch = FetchType.EAGER)
+    var roles: MutableSet<Roles>
+
+) : BaseEntity() {
+
+    fun getAuthorities(): User {
+        val authorities = this.roles.stream().map {
+                role -> SimpleGrantedAuthority("ROLE_$role")
+        }.collect(Collectors.toSet())
+
+        println("AUTHORITIES")
+        println(authorities)
+
+        return User(
+            this.email,
+            this.password,
+            authorities
+        )
+    }
 }

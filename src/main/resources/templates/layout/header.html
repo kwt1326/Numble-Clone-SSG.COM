@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block layout:fragment="head">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link th:href="@{/css/layout.css}" rel="stylesheet" />
+</th:block>
+    <div class="header">
+        <div class="top_menu">
+            <span><a id="a_login">로그인</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span><a id="a_signup" href="/signup">회원가입</a></span>
+            <span>&nbsp;|&nbsp;</span>
+            <span>고객센터</span>
+        </div>
+        <div class="middle_menu">
+            <h3>SSG.COM</h3>
+        </div>
+        <div class="bottom_menu">
+            <div class="bottom_left_icons">
+                <nav class="nav_menu_icon">쓱배송</nav>
+                <nav class="nav_menu_icon">새벽배송</nav>
+            </div>
+            <div class="bottom_right_items">
+                <nav class="nav_menu_item">새벽배송</nav>
+            </div>
+        </div>
+        <h4></h4>
+    </div>
+</html>
+<script>
+<!--document.addEventListener("DOMContentLoaded", function () {-->
+<!--    const ignorePath = ['/admin/signup', '/admin/login']-->
+<!--    if (window.XMLHttpRequest) {-->
+<!--      const httpRequest = new XMLHttpRequest();-->
+<!--      const cookie = document.cookie-->
+<!--        ?.split('; ')-->
+<!--        ?.find(row => row.startsWith('shoppingmall-cookie'))-->
+<!--        ?.split('=')[1];-->
+<!--      httpRequest.responseType = 'json';-->
+<!--      httpRequest.open('GET', '/user/auth/logging');-->
+<!--      httpRequest.setRequestHeader('Authorization', cookie)-->
+<!--      httpRequest.send();-->
+
+<!--      httpRequest.onreadystatechange = function () {-->
+<!--        if (httpRequest.readyState === XMLHttpRequest.DONE) {-->
+<!--          const response = httpRequest.response;-->
+<!--          if (httpRequest.status !== 200 || !response?.result) {-->
+<!--            if (!ignorePath.includes(window.location.pathname)) {-->
+<!--              alert("어드민 이용은 로그인이 필요합니다. 로그인 페이지로 이동합니다.")-->
+<!--              location.href = '/admin/login';-->
+<!--            }-->
+<!--          } else {-->
+<!--            function clickFunc() {-->
+<!--                document.cookie = `shoppingmall-cookie=`;-->
+<!--                alert('로그아웃 되었습니다');-->
+<!--                return '/admin/login';-->
+<!--            }-->
+
+<!--            const loginLink = document.getElementById('a_login');-->
+<!--            loginLink.value = "로그아웃";-->
+<!--            loginLink.href = 'javascript:clickFunc();'-->
+<!--            if (ignorePath.includes(window.location.pathname)) {-->
+<!--              alert("이미 로그인 되어있습니다.")-->
+<!--              location.href = '/admin/menu';-->
+<!--            }-->
+<!--          }-->
+<!--        }-->
+<!--      }-->
+<!--    }-->
+<!--});-->
+</script>
