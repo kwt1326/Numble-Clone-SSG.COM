@@ -1,0 +1,23 @@
+.customer_info_input_wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.customer_info_input_wrap .inputs_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.input_wrap .form-label {
+
+}
+
+.input_wrap .form-control {
+
+}
+
+#check_duplicate {
+
+}

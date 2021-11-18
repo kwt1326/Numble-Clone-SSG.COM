@@ -1,13 +1,12 @@
 package com.ssgclone.demo.config
 
 import com.ssgclone.demo.override.CustomAuthenticatioFailureHandler
-import com.ssgclone.demo.override.CustomAuthenticationSuccessHandler
 import com.ssgclone.demo.service.UserService
-import com.ssgclone.demo.config.CommonConfig
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -20,7 +19,17 @@ class SecurityConfig(
 ): WebSecurityConfigurerAdapter() {
 
     companion object {
-        val PERMIT_ALL_PATH = arrayOf("/", "/login", "/auth/**", "/signup", "/static/**", "/favicon.ico")
+        val PERMIT_ALL_PATH = arrayOf("/", "/auth/**", "/signup", "/static/**", "/favicon.ico")
+    }
+
+    @Throws(Exception::class)
+    override fun configure(web: WebSecurity) {
+        web.ignoring().antMatchers(
+            "/v2/api-docs", "/configuration/ui",
+            "/swagger-resources", "/configuration/security",
+            "/swagger-ui.html", "/webjars/**", "/swagger/**",
+            "/resources/**", "/static/**", "/css/**", "/js/**"
+        )
     }
 
     override fun configure(auth: AuthenticationManagerBuilder) {
@@ -31,13 +40,16 @@ class SecurityConfig(
 
     override fun configure(http: HttpSecurity) {
         http
-            .formLogin().loginPage("/login")
-            .successHandler(CustomAuthenticationSuccessHandler())
+            .formLogin()
+            .loginPage("/")
+            .loginProcessingUrl("/auth/login")
+            .successForwardUrl("/auth/create/success")
             .failureHandler(CustomAuthenticatioFailureHandler())
             .and()
-            .logout().logoutUrl("/logout")
+            .logout().logoutUrl("/auth/logout")
             .and()
             .authorizeRequests()
+            .antMatchers("/auth/create/success").hasAnyRole()
             .antMatchers(*PERMIT_ALL_PATH).permitAll()
             .anyRequest().authenticated()
     }

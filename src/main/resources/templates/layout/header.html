@@ -21,11 +21,11 @@
             <h3>SSG.COM</h3>
         </div>
         <div class="bottom_menu">
-            <div class="bottom_left_icons">
+            <div class="bottom_items_align">
                 <nav class="nav_menu_icon">쓱배송</nav>
                 <nav class="nav_menu_icon">새벽배송</nav>
             </div>
-            <div class="bottom_right_items">
+            <div class="bottom_items_align">
                 <nav class="nav_menu_item">새벽배송</nav>
             </div>
         </div>
@@ -33,44 +33,4 @@
     </div>
 </html>
 <script>
-<!--document.addEventListener("DOMContentLoaded", function () {-->
-<!--    const ignorePath = ['/admin/signup', '/admin/login']-->
-<!--    if (window.XMLHttpRequest) {-->
-<!--      const httpRequest = new XMLHttpRequest();-->
-<!--      const cookie = document.cookie-->
-<!--        ?.split('; ')-->
-<!--        ?.find(row => row.startsWith('shoppingmall-cookie'))-->
-<!--        ?.split('=')[1];-->
-<!--      httpRequest.responseType = 'json';-->
-<!--      httpRequest.open('GET', '/user/auth/logging');-->
-<!--      httpRequest.setRequestHeader('Authorization', cookie)-->
-<!--      httpRequest.send();-->
-
-<!--      httpRequest.onreadystatechange = function () {-->
-<!--        if (httpRequest.readyState === XMLHttpRequest.DONE) {-->
-<!--          const response = httpRequest.response;-->
-<!--          if (httpRequest.status !== 200 || !response?.result) {-->
-<!--            if (!ignorePath.includes(window.location.pathname)) {-->
-<!--              alert("어드민 이용은 로그인이 필요합니다. 로그인 페이지로 이동합니다.")-->
-<!--              location.href = '/admin/login';-->
-<!--            }-->
-<!--          } else {-->
-<!--            function clickFunc() {-->
-<!--                document.cookie = `shoppingmall-cookie=`;-->
-<!--                alert('로그아웃 되었습니다');-->
-<!--                return '/admin/login';-->
-<!--            }-->
-
-<!--            const loginLink = document.getElementById('a_login');-->
-<!--            loginLink.value = "로그아웃";-->
-<!--            loginLink.href = 'javascript:clickFunc();'-->
-<!--            if (ignorePath.includes(window.location.pathname)) {-->
-<!--              alert("이미 로그인 되어있습니다.")-->
-<!--              location.href = '/admin/menu';-->
-<!--            }-->
-<!--          }-->
-<!--        }-->
-<!--      }-->
-<!--    }-->
-<!--});-->
 </script>

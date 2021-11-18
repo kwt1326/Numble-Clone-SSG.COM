@@ -22,8 +22,14 @@ class UserService(
             ?: throw UsernameNotFoundException("loadUserByUsername - not found username: $username")
     }
 
+    override fun findByUsername(username: String): Users? {
+        return userRepository.findByUsername(username)
+    }
+
     @Throws(UsernameNotFoundException::class)
     override fun saveUser(dto: RequestSaveUser): Users {
+
+
         userRepository.save(
             Users(
                 dto.username,

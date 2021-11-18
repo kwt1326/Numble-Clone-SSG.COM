@@ -4,9 +4,10 @@ h3 {
 
 .header {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 80px;
+    /* height: 80px; */
     padding: 20px;
     background: #282828;
     color: white;
@@ -15,34 +16,35 @@ h3 {
 .header .top_menu {
     width: 100%;
     font-size: 12px;
+    margin-bottom: 20px;
     text-align: right;
     color: #bfbfbf;
 }
 
 .header .middle_menu {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .header .bottom_menu {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
 }
 
-.bottom_left_icons {
-
+.bottom_items_align {
+    display: flex;
+    flex-direction: row;
 }
 
 .nav_menu_icon {
-
-}
-
-.bottom_right_items {
-
+    margin-right: 10px;
 }
 
 .nav_menu_item {
@@ -81,4 +83,15 @@ h3 {
     padding: 15px 0;
     text-align: left;
     font-size: 25px;
+}
+
+.form-label {
+    flex: 0.4
+}
+
+.form-control {
+    flex: 0.6;
+    padding: 15px !important;
+    border-radius: 0px !important;
+    border: 1px solid #aaa !important;
 }

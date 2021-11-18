@@ -11,8 +11,10 @@
 }
 
 .input_wrap {
-    width: 210px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .input_wrap_flex {

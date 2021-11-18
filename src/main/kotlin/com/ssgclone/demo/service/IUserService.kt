@@ -8,4 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
 interface IUserService: UserDetailsService {
     @Throws(UsernameNotFoundException::class)
     fun saveUser(dto: RequestSaveUser): Users
+
+    fun findByUsername(username: String): Users?
 }
