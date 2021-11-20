@@ -1,4 +1,4 @@
-package com.ssgclone.demo.domain
+package com.ssgclone.demo.enums
 
 enum class Roles {
     CUSTOMER, ADMIN

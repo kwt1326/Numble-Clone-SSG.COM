@@ -1,3 +1,7 @@
+.customer_info_input_wrap {
+    width: 350px;
+}
+
 .apply_content_wrap {
     width: 250px;
 }
@@ -41,4 +45,40 @@
     border-radius: 5px;
     color: white;
     font-size: 16px;
+}
+
+.title {
+    width: 100%;
+    line-height: 50px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid black;
+}
+
+.submit_btn {
+    background: white;
+    border: 1px solid;
+    border-radius: 40px;
+    width: 350px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    margin-right: 80px;
+}
+
+.alert_msg {
+    color: red;
+}
+
+.confirm_msg {
+    color: rgb(68, 255, 78);
+}
+
+#check_duplicate {
+    width: 80px;
+    height: 56px;
+    border: 1px solid #aaa;
+    background: #f1f1f1;
+    color: #333;
 }

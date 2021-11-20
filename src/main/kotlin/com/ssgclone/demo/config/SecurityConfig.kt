@@ -1,6 +1,7 @@
 package com.ssgclone.demo.config
 
 import com.ssgclone.demo.override.CustomAuthenticatioFailureHandler
+import com.ssgclone.demo.override.CustomAuthenticationSuccessHandler
 import com.ssgclone.demo.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
@@ -19,7 +20,7 @@ class SecurityConfig(
 ): WebSecurityConfigurerAdapter() {
 
     companion object {
-        val PERMIT_ALL_PATH = arrayOf("/", "/auth/**", "/signup", "/static/**", "/favicon.ico")
+        val PERMIT_ALL_PATH = arrayOf("/", "/auth/**", "/signup", "/login", "/static/**", "/favicon.ico")
     }
 
     @Throws(Exception::class)
@@ -41,12 +42,14 @@ class SecurityConfig(
     override fun configure(http: HttpSecurity) {
         http
             .formLogin()
-            .loginPage("/")
+            .loginPage("/login")
             .loginProcessingUrl("/auth/login")
-            .successForwardUrl("/auth/create/success")
+            .successHandler(CustomAuthenticationSuccessHandler())
             .failureHandler(CustomAuthenticatioFailureHandler())
             .and()
-            .logout().logoutUrl("/auth/logout")
+            .logout()
+            .logoutUrl("/auth/logout")
+            .logoutSuccessUrl("/")
             .and()
             .authorizeRequests()
             .antMatchers("/auth/create/success").hasAnyRole()

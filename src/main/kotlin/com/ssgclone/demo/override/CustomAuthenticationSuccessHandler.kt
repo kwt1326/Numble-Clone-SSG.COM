@@ -12,5 +12,7 @@ class CustomAuthenticationSuccessHandler: AuthenticationSuccessHandler {
     override fun onAuthenticationSuccess(
         request: HttpServletRequest?, response: HttpServletResponse?,
         authentication: Authentication?
-    ) {}
+    ) {
+        response?.sendRedirect("/");
+    }
 }

@@ -9,28 +9,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link th:href="@{/css/layout.css}" rel="stylesheet" />
 </th:block>
-    <div class="header">
-        <div class="top_menu">
-            <span><a id="a_login">로그인</a></span>
-            <span>&nbsp;|&nbsp;</span>
-            <span><a id="a_signup" href="/signup">회원가입</a></span>
-            <span>&nbsp;|&nbsp;</span>
-            <span>고객센터</span>
-        </div>
-        <div class="middle_menu">
-            <h3>SSG.COM</h3>
-        </div>
-        <div class="bottom_menu">
-            <div class="bottom_items_align">
-                <nav class="nav_menu_icon">쓱배송</nav>
-                <nav class="nav_menu_icon">새벽배송</nav>
+    <header class="header">
+        <div class="header_wrap">
+            <div class="top_menu">
+                <span>
+                    <a
+                        id="a_login"
+                        href="/login"
+                        sec:authorize="isAnonymous()"
+                    >로그인</a>
+                    <form
+                        id="a_logout"
+                        sec:authorize="isAuthenticated()"
+                        th:action="@{/auth/logout}"
+                        method="post"
+                        style="display:inline"
+                    >
+                        <button type="submit" class="a_style_btn">
+                            로그아웃
+                        </button>
+                    </form>
+                </span>
+                <span>&nbsp;|&nbsp;</span>
+                <span><a id="a_signup" href="/signup">회원가입</a></span>
+                <span>&nbsp;|&nbsp;</span>
+                <span>고객센터</span>
             </div>
-            <div class="bottom_items_align">
-                <nav class="nav_menu_item">새벽배송</nav>
+            <div class="middle_menu">
+                <h3 onclick="location.href='/';" style="cursor: pointer">SSG.COM</h3>
+                <input class="search_input" />
+                <div></div>
             </div>
+            <div class="bottom_menu">
+                <div class="bottom_items_align">
+                    <nav class="nav_menu_icon">쓱배송</nav>
+                    <nav class="nav_menu_icon">새벽배송</nav>
+                </div>
+                <div class="bottom_items_align">
+                    <nav class="nav_menu_item">백화점</nav>
+                    <nav class="nav_menu_item">이벤트</nav>
+                    <nav class="nav_menu_item">선물하기</nav>
+                    <nav class="nav_menu_item">베스트</nav>
+                    <nav class="nav_menu_item">신상품</nav>
+                </div>
+            </div>
+            <h4></h4>    
         </div>
-        <h4></h4>
-    </div>
+    </header>
 </html>
 <script>
 </script>

@@ -4,6 +4,9 @@ import com.ssgclone.demo.domain.Users
 import com.ssgclone.demo.dto.RequestSaveUser
 import com.ssgclone.demo.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.core.userdetails.User
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 
 @Component
@@ -21,7 +24,11 @@ class UserUtils(
             if (
                 usernameRegex.matchEntire(dto.username) != null ||
                 passwordRegex.matchEntire(dto.password) != null ||
-                dto.password == dto.password_check
+                dto.password != dto.password_check ||
+                dto.address == "" ||
+                dto.email == "" ||
+                dto.phoneNumber == "" ||
+                dto.realname == ""
             )
                 result = false
         } else {
@@ -29,5 +36,17 @@ class UserUtils(
         }
 
         return result
+    }
+
+    fun isLogging(): Boolean {
+        val authentication = SecurityContextHolder.getContext().authentication
+        var username = if (authentication.principal is UserDetails) {
+            (authentication.principal as UserDetails).username
+        } else {
+            authentication.principal.toString()
+        }
+
+        val users: Users? = userService.findByUsername(username)
+        return users != null
     }
 }

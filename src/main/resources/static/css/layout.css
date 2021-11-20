@@ -4,16 +4,21 @@ h3 {
 
 .header {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.header_wrap {
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    /* height: 80px; */
+    width: 1024px;
     padding: 20px;
-    background: #282828;
-    color: white;
 }
 
-.header .top_menu {
+.header .header_wrap .top_menu {
     width: 100%;
     font-size: 12px;
     margin-bottom: 20px;
@@ -21,7 +26,7 @@ h3 {
     color: #bfbfbf;
 }
 
-.header .middle_menu {
+.header .header_wrap .middle_menu {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -30,7 +35,7 @@ h3 {
     margin-bottom: 20px;
 }
 
-.header .bottom_menu {
+.header .header_wrap .bottom_menu {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -62,8 +67,6 @@ h3 {
     align-items: center;
     height: 80px;
     padding: 20px;
-    background: #282828;
-    color: white;
     margin: 0;
 }
 
@@ -74,8 +77,6 @@ h3 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: #333333;
-    color: white;
 }
 
 .title {
@@ -83,6 +84,15 @@ h3 {
     padding: 15px 0;
     text-align: left;
     font-size: 25px;
+}
+
+.a_style_btn {
+    border: none;
+    font-size: 12px;
+    padding: 0;
+    background: white;
+    color: #0d6efd;
+    text-decoration: underline;
 }
 
 .form-label {

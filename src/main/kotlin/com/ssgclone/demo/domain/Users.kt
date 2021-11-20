@@ -1,13 +1,18 @@
 package com.ssgclone.demo.domain
 
+import com.ssgclone.demo.enums.Roles
+import lombok.Getter
+import lombok.Setter
 import javax.persistence.*
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import java.util.stream.Collectors
 
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
-data class Users (
+class Users (
 
     @Column(unique = true)
     var username: String,
@@ -30,16 +35,13 @@ data class Users (
 
 ) : BaseEntity() {
 
-    fun getAuthorities(): User {
+    internal fun getAuthorities(): User {
         val authorities = this.roles.stream().map {
                 role -> SimpleGrantedAuthority("ROLE_$role")
         }.collect(Collectors.toSet())
 
-        println("AUTHORITIES")
-        println(authorities)
-
         return User(
-            this.email,
+            this.username,
             this.password,
             authorities
         )

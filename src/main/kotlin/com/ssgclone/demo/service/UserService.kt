@@ -1,11 +1,10 @@
 package com.ssgclone.demo.service
 
-import com.ssgclone.demo.domain.Roles
+import com.ssgclone.demo.enums.Roles
 import com.ssgclone.demo.domain.Users
 import com.ssgclone.demo.dto.RequestSaveUser
 import com.ssgclone.demo.repository.IUserRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -33,11 +32,11 @@ class UserService(
         userRepository.save(
             Users(
                 dto.username,
+                dto.address,
+                dto.phoneNumber,
                 dto.realname,
                 passwordEncoder.encode(dto.password),
-                dto.address,
                 dto.email,
-                dto.phoneNumber,
                 mutableSetOf(Roles.CUSTOMER)
             )
         )

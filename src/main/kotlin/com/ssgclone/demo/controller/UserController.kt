@@ -1,18 +1,13 @@
 package com.ssgclone.demo.controller
 
-import com.ssgclone.demo.domain.Users
 import com.ssgclone.demo.dto.RequestSaveUser
 import com.ssgclone.demo.service.UserService
 import com.ssgclone.demo.utils.UserUtils
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.servlet.ModelAndView
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 @Controller
@@ -24,17 +19,19 @@ class UserController(
 
     @GetMapping("/duplicate")
     fun duplicateCheck(@ModelAttribute requestDto: RequestSaveUser, bindingResult: BindingResult, rattr: RedirectAttributes): String {
-        println(requestDto.username)
-        rattr.addFlashAttribute(
-            "isDuplicate",
-            userService.findByUsername(requestDto.username) != null
+        val existUser: Boolean = userService.findByUsername(requestDto.username) != null
+        val result = mutableMapOf(
+            "isDuplicate" to existUser,
+            "isFailedCreate" to false,
+            "dto" to requestDto,
         )
-        rattr.addFlashAttribute("requestDto", requestDto)
+
+        rattr.addFlashAttribute("data", result)
         return "redirect:/signup"
     }
 
     @PostMapping("/create")
-    fun create(@ModelAttribute requestDto: RequestSaveUser, bindingResult: BindingResult, model: Model): String {
+    fun create(@ModelAttribute requestDto: RequestSaveUser, bindingResult: BindingResult, rattr: RedirectAttributes, model: Model): String {
         if (userUtil.validateRegisterUser(requestDto)) {
             userService.saveUser(requestDto)
 
@@ -45,6 +42,15 @@ class UserController(
             return if (realname != null) "success_apply" else "signup"
         }
 
-        return "signup"
+        val existUser: Boolean = userService.findByUsername(requestDto.username) != null
+        val result = mutableMapOf(
+            "isDuplicate" to existUser,
+            "isFailedCreate" to true,
+            "dto" to requestDto
+        )
+
+        rattr.addFlashAttribute("data", result)
+
+        return "redirect:/signup"
     }
 }
