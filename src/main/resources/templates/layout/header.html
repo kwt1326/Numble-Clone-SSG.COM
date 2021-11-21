@@ -36,7 +36,22 @@
                 <span>고객센터</span>
             </div>
             <div class="middle_menu">
-                <h3 onclick="location.href='/';" style="cursor: pointer">SSG.COM</h3>
+                <div class="logo_wrap">
+                    <h2 onclick="location.href='/';" style="cursor: pointer">SSG.COM</h3>
+                    <button id="logo_menu_btn_open">▼</button>
+                    <div id="logo_menu" style="display: none;">
+                        <div class="logo_menu_title">
+                            <h2>SSG.COM</h2>
+                            <button id="logo_menu_btn_close">▲</button>
+                        </div>
+                        <ul>
+                            <li>이마트몰</li>
+                            <li>신세계몰</li>
+                            <li>신세계백화점</li>
+                            <li>새벽배송</li>
+                        </ul>
+                    </div>
+                </div>
                 <input class="search_input" />
                 <div></div>
             </div>
@@ -58,4 +73,19 @@
     </header>
 </html>
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        function menuOpenClose(open = true) {
+            const logoMenu = document.getElementById("logo_menu");
+            if (open) {
+                logoMenu.style.display = "block";
+            } else {
+                logoMenu.style.display = "none";
+            }
+        }
+
+        const logoMenuOpenBtn = document.getElementById("logo_menu_btn_open");
+        const logoMenuCloseBtn = document.getElementById("logo_menu_btn_close");
+        logoMenuOpenBtn.addEventListener("click", () => menuOpenClose(true))
+        logoMenuCloseBtn.addEventListener("click", () => menuOpenClose(false))
+    })
 </script>

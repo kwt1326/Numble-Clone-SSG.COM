@@ -1,4 +1,4 @@
-h3 {
+h2 {
     margin: 0 !important;
 }
 
@@ -53,7 +53,7 @@ h3 {
 }
 
 .nav_menu_item {
-
+    margin-left: 10px;
 }
 
 .header h4 {
@@ -93,6 +93,65 @@ h3 {
     background: white;
     color: #0d6efd;
     text-decoration: underline;
+}
+
+.logo_wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+#logo_menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #dfdfdf;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 324px;
+}
+
+.logo_menu_title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+#logo_menu ul {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    list-style: none;
+}
+
+#logo_menu ul li {
+    float: left;
+    width: 50%;
+    line-height: 37px;
+    padding-top: 5px;
+}
+
+#logo_menu_btn_open, #logo_menu_btn_close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 1px solid #dfdfdf;
+    margin-left: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+}
+
+.logo_menu div {
+
 }
 
 .form-label {
