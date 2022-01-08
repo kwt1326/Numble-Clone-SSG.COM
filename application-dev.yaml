@@ -1,0 +1,56 @@
+# DEV CONFIG
+server:
+  port: 8090
+
+debug: true
+
+spring:
+#  profiles:
+#    active: "dev" // build.gradle.kts 에서 task 에 옵션이 등록되어 있다면 사용 금지 (2.4.0 이후)
+  datasource:
+    url: jdbc:h2:mem:shoppingmall;MODE=Oracle
+    username: root
+    password:
+    driver-class-name: org.h2.Driver
+    initialization-mode: always
+    platform: h2
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+      jdbc:
+        time_zone: Asia/Seoul
+      connection:
+        characterEncoding: utf8
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+  session:
+    store-type: jdbc
+  thymeleaf:
+    prefix:
+      file: src/main/resources/templates/
+    cache: false
+  resources:
+    static-locations: classpath:/static/
+  devtools:
+    livereload:
+      enabled: true
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  file:
+    name: springlog.log
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
