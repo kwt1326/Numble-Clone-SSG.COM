@@ -1,5 +1,11 @@
 package com.ssgclone.demo.dto
 
-data class ResponseProducts(
-    val id: Long
+import com.ssgclone.demo.enums.ManageCompany
+
+data class ResponseProducts (
+    var list: List<ResponseProductElement>,
+    var totalPage: Int,
+    var selectCompany: String,
+    var searchValue: String?,
+    var check: List<String>,
 )

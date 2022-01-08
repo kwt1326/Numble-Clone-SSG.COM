@@ -18,11 +18,17 @@ class Products (
     var manage_company: ManageCompany,
 
     @Column(name = "delivery_type")
-    var delivery_type: DeliveryType,
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(fetch = FetchType.EAGER)
+    var delivery_type: MutableSet<DeliveryType>,
 
     @Column(name = "star_rate")
-    var star_rate: Int,
+    var star_rate: Float,
 
     @Column(name = "star_rate_num")
     var star_rate_num: Int,
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "product_detail_id")
+    var product_details: List<ProductDetail>,
 ): BaseEntity()

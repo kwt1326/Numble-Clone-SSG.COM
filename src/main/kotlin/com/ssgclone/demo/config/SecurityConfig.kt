@@ -20,7 +20,10 @@ class SecurityConfig(
 ): WebSecurityConfigurerAdapter() {
 
     companion object {
-        val PERMIT_ALL_PATH = arrayOf("/", "/auth/**", "/signup", "/login", "/static/**", "/favicon.ico")
+        val PERMIT_ALL_PATH = arrayOf(
+            "/", "/auth/**", "/signup", "/login", "/mall", "/search_result",
+            "/static/**", "/favicon.ico"
+        )
     }
 
     @Throws(Exception::class)

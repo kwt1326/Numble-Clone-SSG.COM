@@ -45,14 +45,20 @@
                             <button id="logo_menu_btn_close">▲</button>
                         </div>
                         <ul>
-                            <li>이마트몰</li>
-                            <li>신세계몰</li>
-                            <li>신세계백화점</li>
-                            <li>새벽배송</li>
+                            <li onclick="location.href='/mall?company=emart';">이마트몰</li>
+                            <li onclick="location.href='/mall?company=shinsegae_mall';">신세계몰</li>
+                            <li onclick="location.href='/mall?company=shinsegae_departmentstore';">신세계백화점</li>
+                            <li onclick="location.href='/mall?delivery=early_morning';">새벽배송</li>
                         </ul>
                     </div>
                 </div>
-                <input class="search_input" />
+                <form
+                    id="search_form"
+                    th:action="@{/search_result}"
+                    method="get"
+                >
+                    <input class="search_input" name="search" />
+                </form>
                 <div></div>
             </div>
             <div class="bottom_menu">
@@ -61,8 +67,7 @@
                     <nav class="nav_menu_icon">새벽배송</nav>
                 </div>
                 <div class="bottom_items_align">
-                    <nav class="nav_menu_item">백화점</nav>
-                    <nav class="nav_menu_item">이벤트</nav>
+                    <nav onclick="location.href='/mall?company=shinsegae_departmentstore';" class="nav_menu_item">백화점</nav>
                     <nav class="nav_menu_item">선물하기</nav>
                     <nav class="nav_menu_item">베스트</nav>
                     <nav class="nav_menu_item">신상품</nav>

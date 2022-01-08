@@ -8,8 +8,8 @@ class ProductParseVo(
     val manage_company: String,
     val title: String,
     val company: String,
-    val delivery_type: String,
+    val delivery_type: List<String>,
     val product: List<ProductDetailParseVo>,
     val starRate: StarRateParseVo,
     val type: String,
-) {}
+)

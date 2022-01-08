@@ -4,6 +4,6 @@ import lombok.Data
 
 @Data
 class StarRateParseVo(
-    val rate: Int,
+    val rate: Float,
     val rateNum: Int
 ) {}

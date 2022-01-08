@@ -5,9 +5,6 @@ import javax.persistence.*
 @Entity
 @Table(name = "product_detail")
 class ProductDetail(
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "products_id")
-    var product_id: Products,
 
     var title: String,
 

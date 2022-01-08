@@ -63,8 +63,9 @@ h2 {
 
 .footer {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     height: 80px;
     padding: 20px;
     margin: 0;
@@ -111,6 +112,10 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     width: 324px;
+}
+
+#logo_menu > ul > li {
+    cursor: pointer;
 }
 
 .logo_menu_title {
